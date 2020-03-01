@@ -1,15 +1,27 @@
 
 pipeline {
-    agent any
-    stages {
-        stage('Build') {
-            steps {
-                sh 'echo "Hello World"'
-                sh '''
-                    echo "Multiline shell steps works too - new change 6"
-                    ls -lah
-                '''
-            }
-        }
-    }
+         agent any
+         stages {
+                 stage('One') {
+                 steps {
+                     echo 'Hi, this is Zulaikha from edureka'
+                 }
+                 }
+                 stage('Two') {
+                 steps {
+                    input('Do you want to proceed?')
+                 }
+                 }
+                 stage('Three') {
+                 when {
+                       not {
+                            branch "master"
+                       }
+                 }
+                 steps {
+                       echo "Hello"
+                 }
+                 }
+
+              }
 }
